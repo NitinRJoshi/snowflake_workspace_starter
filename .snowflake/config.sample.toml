@@ -3,11 +3,11 @@
 # See: https://docs.snowflake.com/en/developer-guide/snowflake-cli/cicd/integrate-ci-cd
 
 [connections.default]
-account = "<ACCOUNT_IDENTIFIER>"   # e.g., ab12345.us-east-2.aws
-user = "<USERNAME>"
-role = "<ROLE>"
-warehouse = "<WAREHOUSE>"
-database = "<DB_DEV>"              # CI can override per job
-schema = "CORE"
+account = "YQBSCQK-ZM72122"   # e.g., ab12345.us-east-2.aws
+user = "NITINJOSHI"
+role = "ACCOUNTADMIN"
+warehouse = "COMPUTE_WH"
+database = "FINANCE"              # CI can override per job
+schema = "AR"
 # For local runs only: choose one auth method (OIDC is set by the Action in CI)
 # authenticator = "externalbrowser"
