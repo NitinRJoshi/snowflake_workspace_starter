@@ -1,0 +1,23 @@
+
+name: Deploy to PROD
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+permissions:
+  id-token: write
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Snowflake CLI
+        uses: Snowflake-Labs/snowflake-cli-action@v1
+        with:
+          cli-version: latest
+          use-oidc: true
+          default-config-file-path: .snowflake/config.sample.toml
+      - name: Deploy PROD
+        run: |
+          snow sql -q "EXECUTE IMMEDIATE FROM @DEVOPS.COMMON.GIT_REPO/branches/main/deploy/prod_deploy.sql;"
